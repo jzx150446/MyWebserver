@@ -28,7 +28,7 @@ public:
     void DestoryPool();                     //销毁所有连接 
 
     //初始化数据库连接库
-    void init(string url,string user,string password,string DBname,int MaxConn,int port,int close_log);
+    void init(string url,string user,string password,string DBname,int port,int MaxConn,int close_log);
 private:
     connection_pool();
     ~connection_pool();

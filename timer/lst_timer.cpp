@@ -171,7 +171,7 @@ void utils::sig_handler(int sig)
 
 }
 
-void utils::addsig(int sig,void(handler)(int),bool restart = true)
+void utils::addsig(int sig,void(handler)(int),bool restart)
 {
     struct sigaction sa;
     memset(&sa,'\0',sizeof(sa));
@@ -199,7 +199,7 @@ int *utils::u_pipefd = 0;
 int utils::u_epollfd = 0;
 
 class utils;
-void cb_fun(client_data *user_data)
+void cb_func(client_data *user_data)
 {
     epoll_ctl(utils::u_epollfd,EPOLL_CTL_DEL,user_data->sockfd,0);
     assert(user_data);

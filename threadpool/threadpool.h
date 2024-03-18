@@ -16,8 +16,8 @@ public:
     threadpool(int actor_modal,connection_pool *connPool,int thread_num = 8,int max_requests = 10000);
     ~threadpool();
     //一添加任务
-    bool append(T &request,int state);
-    bool append_p(T &request);
+    bool append(T *request,int state);
+    bool append_p(T *request);
 
 private:
     //工作线程运行的函数
@@ -75,7 +75,7 @@ threadpool<T>::~threadpool()
 }
 
 template<class T>
-bool threadpool<T>::append(T &request,int state)
+bool threadpool<T>::append(T *request,int state)
 {
     m_queuelocker.lock();
     if(m_worker.size() >= m_max_requests)
@@ -91,7 +91,7 @@ bool threadpool<T>::append(T &request,int state)
     return true;
 }
 template<class T>
-bool threadpool<T>::append_p(T &request)
+bool threadpool<T>::append_p(T *request)
 {
     m_queuelocker.lock();
     if (m_workqueue.size() >= m_max_requests) {

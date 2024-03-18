@@ -19,7 +19,7 @@ connection_pool::~connection_pool()
     DestoryPool();
 }
 
-void connection_pool::init(string url,string user,string password,string DBname,int MaxConn,int port,int close_log)
+void connection_pool::init(string url,string user,string password,string DBname,int port,int MaxConn,int close_log)
 {
     m_Url = url;
     m_User = user;
